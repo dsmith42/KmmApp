@@ -40,3 +40,4 @@ data class Links(
     @SerialName("article_link")
     val articleUrl: String?
 )
+
