@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
+    kotlin("plugin.serialization")
     id("com.android.library")
     id("kotlin-android-extensions")
 }
@@ -25,11 +26,13 @@ kotlin {
     }
 
     val coroutinesVersion = "1.3.9-native-mt"
+    val serializationVersion = "1.0.0-RC"
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
             }
         }
         val commonTest by getting {
