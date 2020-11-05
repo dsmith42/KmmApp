@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.android.library")
     id("kotlin-android-extensions")
+    id("com.squareup.sqldelight")
 }
 group = "com.example.kmmapp"
 version = "1.0-SNAPSHOT"
@@ -96,4 +97,10 @@ val packForXcode by tasks.creating(Sync::class) {
     into(targetDir)
 }
 tasks.getByName("build").dependsOn(packForXcode)
+
+sqldelight {
+    database("AppDatabase") {
+        packageName = "com.example.kmmapp.shared.cache"
+    }
+}
 
